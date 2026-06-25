@@ -1436,6 +1436,7 @@ main,
 /* dark contact block */
 [data-theme="sonnet"] #contact {
   background: #1e1b4b;
+  padding-bottom: clamp(80px, 12vw, 160px);
 }
 [data-theme="sonnet"] #contact .contact__title {
   color: #f5f3ff;
