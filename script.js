@@ -154,6 +154,29 @@ window.addEventListener("load", () => window.scrollTo(0, 0));
   });
 })();
 
+// Mobile floating pill nav — track active section.
+(function () {
+  const nav = document.getElementById('mobNav');
+  if (!nav) return;
+  const items = Array.from(nav.querySelectorAll('.mob-nav__item'));
+  const sectionIds = items.map(item => item.dataset.target);
+  const sections = sectionIds.map(id =>
+    id === 'top' ? document.getElementById('top') || document.body : document.getElementById(id)
+  );
+
+  const update = () => {
+    const triggerY = window.scrollY + window.innerHeight * 0.45;
+    let active = 0;
+    sections.forEach((sec, i) => {
+      if (sec && sec.getBoundingClientRect().top + window.scrollY <= triggerY) active = i;
+    });
+    items.forEach((item, i) => item.classList.toggle('is-active', i === active));
+  };
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
 // Gallery lightbox — click a photo to open it with its description.
 (function () {
   const lb = document.getElementById("lightbox");
