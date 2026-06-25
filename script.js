@@ -162,15 +162,20 @@ window.addEventListener("load", () => window.scrollTo(0, 0));
   });
 })();
 
-// Pill nav → auto-open accordion if the target section is collapsed.
+// Pill nav → toggle accordion on the target section.
 (function () {
   document.querySelectorAll('.mob-nav__item[href^="#"]').forEach(function (link) {
     link.addEventListener('click', function () {
       var id = link.getAttribute('href').slice(1);
       var section = document.getElementById(id);
-      if (section && section.classList.contains('mob-accordion') &&
-          !section.classList.contains('is-open')) {
-        section.classList.add('is-open');
+      if (section && section.classList.contains('mob-accordion')) {
+        var wasOpen = section.classList.contains('is-open');
+        section.classList.toggle('is-open');
+        if (!wasOpen) {
+          setTimeout(function () {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 60);
+        }
       }
     });
   });
