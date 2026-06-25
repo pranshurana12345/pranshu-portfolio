@@ -1,3 +1,11 @@
+// Restore saved theme immediately (runs on every page).
+(function () {
+  try {
+    var t = localStorage.getItem("pr-theme");
+    if (t && t !== "light") document.documentElement.setAttribute("data-theme", t);
+  } catch (e) {}
+})();
+
 // Always load at the top of the page (don't restore previous scroll on refresh).
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 window.addEventListener("load", () => window.scrollTo(0, 0));
@@ -154,23 +162,32 @@ window.addEventListener("load", () => window.scrollTo(0, 0));
   });
 })();
 
-// Mobile floating pill nav — track active section.
+// Mobile floating pill nav — static active on sub-pages, scroll-track on index.
 (function () {
   const nav = document.getElementById('mobNav');
   if (!nav) return;
   const items = Array.from(nav.querySelectorAll('.mob-nav__item'));
-  const sectionIds = items.map(item => item.dataset.target);
-  const sections = sectionIds.map(id =>
-    id === 'top' ? document.getElementById('top') || document.body : document.getElementById(id)
-  );
+
+  // Sub-pages declare their active item via data-active-nav on <body>
+  const fixed = document.body.dataset.activeNav;
+  if (fixed) {
+    items.forEach(item => item.classList.toggle('is-active', item.dataset.target === fixed));
+    return;
+  }
+
+  // index.html — track scroll across sections that exist on this page
+  const sections = items
+    .map(item => ({ item, el: document.getElementById(item.dataset.target) }))
+    .filter(({ el }) => !!el);
 
   const update = () => {
     const triggerY = window.scrollY + window.innerHeight * 0.45;
-    let active = 0;
-    sections.forEach((sec, i) => {
-      if (sec && sec.getBoundingClientRect().top + window.scrollY <= triggerY) active = i;
+    let active = sections[0];
+    sections.forEach(({ item, el }) => {
+      if (el.getBoundingClientRect().top + window.scrollY <= triggerY) active = { item, el };
     });
-    items.forEach((item, i) => item.classList.toggle('is-active', i === active));
+    items.forEach(item => item.classList.remove('is-active'));
+    if (active) active.item.classList.add('is-active');
   };
 
   window.addEventListener('scroll', update, { passive: true });

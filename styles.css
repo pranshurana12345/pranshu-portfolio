@@ -2185,6 +2185,49 @@ main,
 }
 
 /* ============================================================
+   Sub-page header (work.html / products.html)
+   ============================================================ */
+.back-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px 7px 12px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 36px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.back-pill:hover { color: var(--ink); border-color: var(--accent); }
+
+.page-intro {
+  padding-block: clamp(52px, 9vh, 120px) clamp(36px, 5vh, 64px);
+}
+.page-intro__title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2.8rem, 1.8rem + 5vw, 5.5rem);
+  letter-spacing: -0.03em;
+  line-height: 1.06;
+  margin-bottom: 18px;
+}
+.page-intro__sub {
+  color: var(--soft);
+  font-size: clamp(1.1rem, 1rem + 0.5vw, 1.38rem);
+  max-width: 48ch;
+  line-height: 1.5;
+}
+
+/* Active page indicator in nav */
+.nav__links [aria-current="page"] {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* ============================================================
    Mobile — floating pill nav + layout tightening
    ============================================================ */
 .mob-nav { display: none; } /* hidden on desktop */
@@ -2195,14 +2238,6 @@ main,
 
   /* tighter section spacing so it's less scroll-heavy */
   .section { padding-block: 52px; }
-
-  /* center the hero on small screens */
-  .hero__main {
-    align-items: center;
-    text-align: center;
-  }
-  .hero__lead { text-align: center; }
-  .hero__cta { justify-content: center; }
 
   /* floating liquid-glass pill nav */
   .mob-nav {
@@ -2261,7 +2296,7 @@ main,
     gap: 3px;
     padding: 9px 14px;
     border-radius: 999px;
-    color: var(--muted);
+    color: var(--soft);
     font-size: 0.6rem;
     font-weight: 600;
     letter-spacing: 0.03em;
