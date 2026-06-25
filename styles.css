@@ -1097,16 +1097,21 @@ main,
   40% { transform: rotate(-4deg); }
   50% { transform: rotate(10deg); }
 }
-@media (max-width: 600px) {
+@media (max-width: 719px) {
   .hero__title {
-    font-size: clamp(1.55rem, 7.4vw, 2.4rem);
+    font-size: clamp(1.55rem, 7.4vw, 2.8rem);
   }
   .hero__name {
     margin-left: 0.18em;
   }
   .hero__cta .btn {
-    padding: 12px 12px;
-    font-size: 0.88rem;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+  /* prevent the sonnet left-bar padding from pushing content off-screen */
+  [data-theme="sonnet"] .hero__main,
+  html[data-theme="sonnet"] .hero__main {
+    padding-left: 14px;
   }
 }
 
@@ -2182,6 +2187,108 @@ main,
 @media (max-width: 560px) {
   .prod-cols { grid-template-columns: 1fr; }
   .prod-tab__cat { display: none; }
+}
+
+/* ============================================================
+   Dark (sonnet) is now the permanent default — apply it to :root
+   ============================================================ */
+:root {
+  --accent:   #7c3aed;
+  --accent-2: #059669;
+  --bg:       #f7f6ff;
+  --chip-bg:  #ede9fe;
+  --radius:   18px;
+  --shadow:   0 1px 2px rgba(109,40,217,.05),
+              0 18px 44px -22px rgba(109,40,217,.2);
+  --stat-bg:  linear-gradient(
+    150deg,
+    var(--card),
+    color-mix(in srgb, var(--card) 78%, var(--accent))
+  );
+}
+.bg__blob--1 { background: #ddd6fe !important; }
+.bg__blob--2 { background: #c7d7ff !important; }
+.bg__blob--3 { background: #bbf7d0 !important; }
+
+/* ============================================================
+   Mobile accordion — collapsed by default, tap to expand
+   ============================================================ */
+@media (max-width: 719px) {
+  /* The section itself has no padding when collapsed */
+  .mob-accordion.section {
+    padding-block: 0;
+    border-top: 1px solid var(--line);
+  }
+  .mob-accordion.section:first-of-type {
+    border-top: none;
+  }
+
+  /* Visible header strip — always shown */
+  .mob-accordion__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0 16px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .mob-accordion__head .sec-title {
+    margin-bottom: 0;
+  }
+
+  /* "+" button that rotates to "×" when open */
+  .mob-chev {
+    flex: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 1px solid var(--line);
+    display: grid;
+    place-items: center;
+    font-size: 1.15rem;
+    line-height: 1;
+    font-weight: 400;
+    color: var(--muted);
+    transition:
+      rotate 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+      background 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease;
+  }
+  .mob-accordion.is-open .mob-chev {
+    rotate: 45deg;
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+
+  /* Collapsible body */
+  .mob-accordion__body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .mob-accordion.is-open .mob-accordion__body {
+    max-height: 5000px;
+  }
+  .mob-accordion.is-open.section {
+    padding-bottom: 32px;
+  }
+
+  /* Skills cap grid: disable on mobile so accordion works */
+  .mob-accordion .wrap .cap__body {
+    display: block;
+    padding-top: 4px;
+  }
+}
+
+/* Desktop: accordion chrome invisible, body always shown */
+@media (min-width: 720px) {
+  .mob-chev { display: none; }
+  .mob-accordion__body { max-height: none !important; overflow: visible !important; }
+  .mob-accordion__head { cursor: default; }
 }
 
 /* ============================================================

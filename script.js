@@ -162,6 +162,31 @@ window.addEventListener("load", () => window.scrollTo(0, 0));
   });
 })();
 
+// Mobile accordion — tap heading to expand/collapse section.
+(function () {
+  if (window.matchMedia('(min-width: 720px)').matches) return;
+  document.querySelectorAll('.mob-accordion').forEach(function (acc) {
+    var head = acc.querySelector('.mob-accordion__head');
+    if (!head) return;
+    head.addEventListener('click', function () {
+      var opening = !acc.classList.contains('is-open');
+      acc.classList.toggle('is-open', opening);
+      // scroll section into view when opening so it's not hidden behind pill nav
+      if (opening) {
+        setTimeout(function () {
+          acc.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 60);
+      }
+    });
+    // keyboard support
+    head.setAttribute('role', 'button');
+    head.setAttribute('tabindex', '0');
+    head.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); head.click(); }
+    });
+  });
+})();
+
 // Mobile floating pill nav — static active on sub-pages, scroll-track on index.
 (function () {
   const nav = document.getElementById('mobNav');
