@@ -1,0 +1,1257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pranshu Rana — Growth, Product & GTM</title>
+  <meta name="description" content="Pranshu Rana — startup operator helping founders build systems, grow products, and execute GTM across Web3."/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet"/>
+  <style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:       #07060d;
+    --bg-2:     #0d0b1a;
+    --card:     #121028;
+    --ink:      #eceaff;
+    --soft:     #a49fd0;
+    --muted:    #65608f;
+    --line:     rgba(155, 109, 255, 0.13);
+    --accent:   #9b6dff;
+    --accent-2: #34d399;
+    --shadow:   0 2px 8px rgba(0,0,0,.55), 0 22px 60px -20px rgba(0,0,0,.6);
+    --radius:   18px;
+    --radius-sm:10px;
+    --pill:     980px;
+    --pad:      clamp(24px, 5vw, 72px);
+    --nav-h:    66px;
+    --display:  "Clash Display", system-ui, sans-serif;
+    --sans:     "Satoshi", -apple-system, system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: clamp(1rem, 0.96rem + 0.2vw, 1.12rem);
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.04;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  section { scroll-margin-top: calc(var(--nav-h) + 16px); }
+
+  .wrap {
+    width: 100%;
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-inline: var(--pad);
+  }
+
+  /* ================================================================
+     NAV
+  ================================================================ */
+  .nav {
+    position: fixed;
+    inset: 0 0 auto;
+    height: var(--nav-h);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    background: rgba(7, 6, 13, 0.46);
+    backdrop-filter: saturate(200%) blur(24px) brightness(1.08);
+    -webkit-backdrop-filter: saturate(200%) blur(24px) brightness(1.08);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-top: 3px solid var(--accent);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.07),
+      inset 0 1px 0 rgba(255,255,255,0.12),
+      0 4px 24px rgba(0,0,0,0.3);
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+  .nav.is-scrolled {
+    background: rgba(7, 6, 13, 0.72);
+    border-bottom-color: rgba(255,255,255,0.14);
+  }
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-inline: var(--pad);
+  }
+  .nav__brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.06rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .brand__dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent);
+    flex: none;
+  }
+  .nav__links {
+    display: none;
+    align-items: center;
+    gap: 28px;
+    font-size: 0.9rem;
+    color: var(--soft);
+  }
+  .nav__links a { transition: color 0.18s; }
+  .nav__links a:hover { color: var(--ink); }
+  .nav__back {
+    border: 1px solid var(--line);
+    border-radius: var(--pill);
+    padding: 6px 14px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--muted);
+    transition: border-color 0.18s, color 0.18s;
+  }
+  .nav__back:hover { color: var(--ink); border-color: rgba(155,109,255,.35); }
+  .nav__cta {
+    background: var(--accent);
+    color: #fff;
+    border-radius: var(--pill);
+    padding: 8px 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: opacity 0.18s, transform 0.18s;
+  }
+  .nav__cta:hover { opacity: 0.88; transform: translateY(-1px); }
+  @media (min-width: 720px) { .nav__links { display: flex; } }
+
+  /* ================================================================
+     HERO — split headline + info, then stats row
+  ================================================================ */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: var(--nav-h);
+    padding-inline: var(--pad);
+    max-width: 1240px;
+    margin-inline: auto;
+    gap: clamp(36px, 6vh, 72px);
+    padding-bottom: clamp(40px, 6vh, 80px);
+  }
+
+  /* top row: big headline left, name/lead/CTA right */
+  .hero__split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 4vw, 64px);
+    align-items: end;
+  }
+  @media (min-width: 800px) {
+    .hero__split { grid-template-columns: 1.15fr 0.85fr; }
+  }
+
+  .hero__headline {
+    font-size: clamp(3.4rem, 10vw, 9rem);
+    line-height: 0.93;
+    letter-spacing: -0.045em;
+  }
+  .hero__headline .v { color: var(--accent); }
+
+  .hero__right {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2.4vh, 22px);
+    padding-bottom: 0.18em;
+  }
+  .hero__name-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .hero__name {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(1.15rem, 2vw, 1.6rem);
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(52,211,153,.1);
+    border: 1px solid rgba(52,211,153,.24);
+    border-radius: var(--pill);
+    padding: 5px 13px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent-2);
+    white-space: nowrap;
+  }
+  .status-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent-2);
+    animation: pulse-dot 2.6s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(52,211,153,.45); }
+    55%       { box-shadow: 0 0 0 5px rgba(52,211,153,0); }
+  }
+  .hero__lead {
+    color: var(--soft);
+    font-size: clamp(1rem, 1vw + 0.6rem, 1.22rem);
+    line-height: 1.54;
+    max-width: 40ch;
+  }
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .btn-p {
+    background: var(--accent);
+    color: #fff;
+    padding: 13px 28px;
+    border-radius: var(--pill);
+    font-weight: 700;
+    font-size: 0.98rem;
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+  .btn-p:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -14px rgba(155,109,255,.65);
+  }
+  .btn-g {
+    border: 1px solid var(--line);
+    color: var(--soft);
+    padding: 13px 28px;
+    border-radius: var(--pill);
+    font-weight: 600;
+    font-size: 0.98rem;
+    transition: border-color 0.18s, color 0.18s;
+  }
+  .btn-g:hover { border-color: rgba(155,109,255,.4); color: var(--ink); }
+
+  /* stats row below the split */
+  .hero__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    gap: 1px;
+    background: var(--line);
+  }
+  .hstat {
+    background: var(--bg-2);
+    padding: clamp(18px, 2.4vw, 34px) clamp(16px, 2.2vw, 30px);
+    transition: background 0.2s;
+  }
+  .hstat:hover { background: var(--card); }
+  .hstat__n {
+    display: block;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2rem, 3.4vw, 3.2rem);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .hstat__n .v { color: var(--accent); }
+  .hstat__l {
+    font-size: 0.86rem;
+    color: var(--muted);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  @media (max-width: 540px) {
+    .hero__stats { grid-template-columns: 1fr; }
+  }
+
+  /* ================================================================
+     MARQUEE
+  ================================================================ */
+  .marquee {
+    overflow: hidden;
+    border-block: 1px solid var(--line);
+    padding-block: clamp(12px, 1.6vh, 18px);
+    background: var(--bg-2);
+  }
+  .marquee__track {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    width: max-content;
+    animation: scroll-m 28s linear infinite;
+  }
+  .marquee:hover .marquee__track { animation-play-state: paused; }
+  .marquee__track span {
+    font-weight: 600;
+    font-size: clamp(1rem, 0.88rem + 0.9vw, 1.55rem);
+    color: var(--soft);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+  .marquee__track b { color: var(--accent); font-size: 1rem; }
+  @keyframes scroll-m {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ================================================================
+     SECTION BASE
+  ================================================================ */
+  .section { padding-block: clamp(60px, 8vh, 100px); }
+
+  .sec-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: clamp(40px, 6vh, 64px);
+  }
+  .sec-label::after {
+    content: "";
+    height: 1px;
+    width: 80px;
+    flex: none;
+    background: var(--line);
+  }
+
+  /* ================================================================
+     WORK — case study rows
+  ================================================================ */
+  .cases { display: flex; flex-direction: column; gap: clamp(20px, 3vh, 30px); }
+
+  .case {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(24px, 3vw, 48px);
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: clamp(26px, 3.2vw, 48px);
+    transition: border-color 0.25s, box-shadow 0.25s;
+    overflow: hidden;
+  }
+  .case:hover {
+    border-color: rgba(155,109,255,.28);
+    box-shadow: 0 0 0 1px rgba(155,109,255,.07), var(--shadow);
+  }
+  @media (min-width: 860px) {
+    .case { grid-template-columns: 1fr 1fr; align-items: start; }
+    .case:nth-child(even) .case__visual { order: -1; }
+  }
+
+  .case__tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(155,109,255,.11);
+    border-radius: var(--pill);
+    padding: 4px 12px;
+    display: inline-block;
+    margin-bottom: 14px;
+  }
+  .case__title {
+    font-size: clamp(1.6rem, 1.3rem + 1.4vw, 2.4rem);
+    margin-bottom: 26px;
+  }
+  .case__blocks { display: flex; flex-direction: column; gap: 18px; }
+  .blk__label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 5px;
+  }
+  .blk__text {
+    color: var(--soft);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* window mockup */
+  .case__visual { display: flex; flex-direction: column; gap: 10px; }
+  .win {
+    background: #0f0d1e;
+    border: 1px solid rgba(155,109,255,.16);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+  .win__bar {
+    display: flex;
+    gap: 6px;
+    padding: 9px 12px;
+    background: #0a0818;
+    border-bottom: 1px solid rgba(155,109,255,.1);
+  }
+  .win__bar i {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: rgba(255,255,255,.1);
+  }
+  .win__bar i:nth-child(1) { background: #ff5f57; }
+  .win__bar i:nth-child(2) { background: #febc2e; }
+  .win__bar i:nth-child(3) { background: #28c840; }
+  .win__shot {
+    overflow: hidden;
+    background: #080614;
+  }
+  .win__shot img {
+    width: 100%;
+    display: block;
+    max-height: 300px;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.6s cubic-bezier(0.22,1,.36,1);
+  }
+  .case:hover .win__shot img { transform: scale(1.03); }
+
+  /* multi-image thumbs */
+  .thumbs { display: flex; gap: 8px; flex-wrap: wrap; }
+  .thumb {
+    width: 58px; height: 38px;
+    border-radius: 7px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    cursor: pointer;
+    background: none;
+    padding: 0;
+    transition: border-color 0.15s;
+  }
+  .thumb.on { border-color: var(--accent); }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ================================================================
+     JOURNEY — 2-column grid of phase cards
+  ================================================================ */
+  .phases {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  @media (min-width: 680px) { .phases { grid-template-columns: repeat(2, 1fr); } }
+
+  .phase {
+    background: var(--bg-2);
+    padding: clamp(22px, 2.8vw, 40px);
+    transition: background 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .phase:hover { background: var(--card); }
+
+  .phase__num {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 14px;
+    color: rgba(155,109,255,.14);
+    display: block;
+  }
+  .phase__tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(155,109,255,.09);
+    padding: 4px 10px;
+    border-radius: var(--pill);
+    display: inline-block;
+    width: fit-content;
+    margin-bottom: 14px;
+  }
+  .phase__title {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(1.02rem, 0.95rem + 0.5vw, 1.26rem);
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .phase__body {
+    color: var(--soft);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 14px;
+    flex: 1;
+  }
+  .phase__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: auto;
+  }
+  .phase__list li {
+    padding-left: 14px;
+    position: relative;
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+  .phase__list li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0.68em;
+    width: 6px; height: 1.5px;
+    background: var(--accent);
+    border-radius: 1px;
+  }
+
+  /* "Next" phase card */
+  .phase--next {
+    border: 1px dashed rgba(155,109,255,.22) !important;
+    background: transparent !important;
+  }
+  .phase--next:hover { background: rgba(155,109,255,.04) !important; }
+  .phase--next .phase__num { color: rgba(52,211,153,.14); }
+  .phase--next .phase__tag { color: var(--accent-2); background: rgba(52,211,153,.08); }
+
+  /* ================================================================
+     SKILLS
+  ================================================================ */
+  .skills-wrap {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(36px, 5vw, 64px);
+  }
+  @media (min-width: 720px) { .skills-wrap { grid-template-columns: 1.3fr 0.7fr; } }
+
+  .skills__group-label {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+  }
+  .chips li {
+    border: 1px solid var(--line);
+    border-radius: var(--pill);
+    padding: 9px 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--soft);
+    background: var(--bg-2);
+    cursor: default;
+    transition: border-color 0.18s, color 0.18s, background 0.18s, transform 0.18s;
+  }
+  .chips li:hover {
+    border-color: var(--accent);
+    color: #fff;
+    background: rgba(155,109,255,.17);
+    transform: translateY(-2px);
+  }
+
+  .learning-list { display: flex; flex-direction: column; gap: 14px; }
+  .li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--soft);
+    font-size: 0.96rem;
+    font-weight: 500;
+  }
+  .li__dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    border: 1.5px dashed var(--accent);
+    flex: none;
+  }
+
+  /* ================================================================
+     CONTACT
+  ================================================================ */
+  .contact {
+    text-align: center;
+    padding-block: clamp(88px, 14vh, 160px);
+  }
+  .contact__kicker {
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 22px;
+  }
+  .contact__title {
+    font-size: clamp(3rem, 7.5vw, 7.4rem);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 44px;
+    max-width: 14ch;
+    margin-inline: auto;
+  }
+  .contact__email {
+    display: inline-block;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(1.2rem, 2.4vw, 2rem);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    border-bottom: 2px solid rgba(155,109,255,.28);
+    padding-bottom: 4px;
+    transition: border-color 0.18s;
+  }
+  .contact__email:hover { border-bottom-color: var(--accent); }
+  .contact__meta {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-top: 18px;
+  }
+  .contact__links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 26px;
+    margin-top: 40px;
+  }
+  .contact__links a {
+    color: var(--soft);
+    font-size: 0.94rem;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(164,159,208,.28);
+    transition: color 0.18s, text-decoration-color 0.18s;
+  }
+  .contact__links a:hover { color: var(--ink); text-decoration-color: var(--soft); }
+
+  /* ================================================================
+     FOOTER
+  ================================================================ */
+  .foot {
+    border-top: 1px solid var(--line);
+    padding-block: 32px;
+  }
+  .foot__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    color: var(--muted);
+    font-size: 0.86rem;
+  }
+  .foot__links { display: flex; gap: 22px; }
+  .foot__links a { color: var(--muted); transition: color 0.18s; }
+  .foot__links a:hover { color: var(--ink); }
+
+  /* ================================================================
+     SCROLL REVEAL
+  ================================================================ */
+  .r {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.72s cubic-bezier(0.22,1,.36,1), transform 0.72s cubic-bezier(0.22,1,.36,1);
+  }
+  .r.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee__track { animation: none; }
+    .r { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ================================================================
+     EXPERIMENTAL — Products I've Helped Improve
+  ================================================================ */
+  .exp-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #f59e0b;
+    border: 1px dashed rgba(245,158,11,.32);
+    border-radius: var(--pill);
+    padding: 5px 13px;
+    margin-bottom: clamp(26px, 3.5vh, 40px);
+  }
+  .exp-badge::before {
+    content: "";
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #f59e0b;
+    opacity: 0.7;
+  }
+  .exp-intro { max-width: 64ch; margin-bottom: clamp(28px, 4vh, 46px); }
+  .exp-intro__title {
+    font-size: clamp(1.7rem, 1.3rem + 2vw, 2.8rem);
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+    margin-bottom: 14px;
+  }
+  .exp-intro__sub { color: var(--soft); font-size: 0.96rem; line-height: 1.7; margin-bottom: 8px; }
+  .exp-intro__note { color: var(--muted); font-size: 0.86rem; line-height: 1.65; }
+
+  .proj-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; }
+  @media (max-width:700px) { .proj-grid { grid-template-columns:repeat(3,1fr); } }
+  @media (max-width:420px) { .proj-grid { grid-template-columns:repeat(2,1fr); } }
+  .proj-card { display:flex; flex-direction:column; align-items:flex-start; gap:10px; padding:20px 18px; border:1px solid var(--line); border-radius:var(--radius); background:var(--card); cursor:pointer; text-align:left; transition:border-color .18s,background .18s,box-shadow .18s; }
+  .proj-card:hover { border-color:color-mix(in srgb,var(--accent) 50%,var(--line)); box-shadow:0 2px 14px color-mix(in srgb,var(--accent) 10%,transparent); }
+  .proj-card__logo { width:38px; height:38px; border-radius:9px; object-fit:cover; }
+  .proj-card__name { font-weight:700; font-size:.9rem; color:var(--ink); margin-top:4px; }
+  .proj-card__cat { font-size:.73rem; color:var(--muted); }
+  .proj-stage { display:grid; grid-template-columns:1fr 190px; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; min-height:360px; }
+  @media (max-width:640px) { .proj-stage { grid-template-columns:1fr; } }
+  .proj-left { display:flex; flex-direction:column; background:var(--bg); }
+  .proj-active-hd { display:flex; align-items:center; gap:12px; padding:16px 22px; border-bottom:1px solid var(--line); background:var(--card); flex-wrap:wrap; }
+  .proj-active-hd__logo { width:36px; height:36px; border-radius:8px; object-fit:cover; flex:none; }
+  .proj-active-hd__info { flex:1; min-width:0; }
+  .proj-active-hd__name { font-weight:700; font-size:1rem; color:var(--ink); }
+  .proj-active-hd__cat { font-size:.75rem; color:var(--muted); margin-top:1px; }
+  .proj-back { font-size:.78rem; font-weight:600; color:var(--muted); background:transparent; border:1px solid var(--line); border-radius:var(--pill); padding:5px 12px; cursor:pointer; flex:none; transition:color .15s,border-color .15s; }
+  .proj-back:hover { color:var(--ink); border-color:color-mix(in srgb,var(--accent) 40%,var(--line)); }
+  .proj-panels { flex:1; }
+  .proj-right { border-left:1px solid var(--line); background:var(--card); display:flex; flex-direction:column; }
+  @media (max-width:640px) { .proj-right { border-left:none; border-top:1px solid var(--line); flex-direction:row; overflow-x:auto; scrollbar-width:none; } }
+  .proj-side-btn { display:flex; align-items:center; gap:9px; padding:13px 14px; border:none; border-bottom:1px solid var(--line); background:transparent; cursor:pointer; text-align:left; transition:background .15s; width:100%; }
+  .proj-side-btn:last-child { border-bottom:none; }
+  .proj-side-btn:hover { background:color-mix(in srgb,var(--accent) 7%,transparent); }
+  .proj-side-btn__logo { width:28px; height:28px; border-radius:6px; object-fit:cover; flex:none; }
+  .proj-side-btn__info { min-width:0; overflow:hidden; }
+  .proj-side-btn__name { font-weight:700; font-size:.8rem; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block; }
+  .proj-side-btn__cat { font-size:.67rem; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block; margin-top:1px; }
+  .proj-roles { display:flex; flex-wrap:wrap; gap:5px; }
+  .proj-role { font-size:.63rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); background:color-mix(in srgb,var(--accent) 10%,transparent); border-radius:var(--pill); padding:3px 9px; }
+  .proj-panel { display:none; flex-direction:column; gap:20px; padding:clamp(20px,2.5vw,32px); }
+  .proj-panel.is-active { display:flex; }
+  .exp-blk { display:flex; flex-direction:column; }
+  .exp-blk__label { display:block; font-size:.68rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--accent); margin-bottom:10px; }
+  .exp-blk__text { color:var(--ink); font-size:.9rem; line-height:1.66; }
+  .exp-blk__list { list-style:none; display:flex; flex-direction:column; gap:6px; }
+  .exp-blk__list li { padding-left:14px; position:relative; color:var(--soft); font-size:.88rem; line-height:1.58; }
+  .exp-blk__list li::before { content:""; position:absolute; left:0; top:.67em; width:4px; height:4px; border-radius:50%; background:var(--accent); }
+  .exp-focus { display:flex; flex-wrap:wrap; gap:6px; padding-top:4px; border-top:1px solid var(--line); }
+  .exp-tag { font-size:.73rem; font-weight:600; color:var(--muted); border:1px solid var(--line); border-radius:var(--pill); padding:4px 11px; background:var(--bg); }
+  </style>
+</head>
+<body>
+
+<!-- ================================================================
+     NAV
+================================================================ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="sonnet.html" class="nav__brand">
+      <span class="brand__dot" aria-hidden="true"></span>
+      Pranshu Rana
+    </a>
+    <nav class="nav__links" aria-label="Site navigation">
+      <a href="#work">Work</a>
+      <a href="#journey">Journey</a>
+      <a href="#skills">Skills</a>
+      <a href="index.html" class="nav__back">← Compare</a>
+      <a href="#contact" class="nav__cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================================================================
+       HERO
+  ================================================================ -->
+  <section class="hero" id="top" aria-label="Introduction">
+    <div class="hero__split">
+      <h1 class="hero__headline r">
+        <span class="v">Growth,</span><br>
+        Product<br>
+        &amp;&nbsp;GTM.
+      </h1>
+      <div class="hero__right r">
+        <div class="hero__name-row">
+          <span class="hero__name">Pranshu Rana</span>
+          <span class="status-pill">
+            <span class="status-dot" aria-hidden="true"></span>
+            Open to work
+          </span>
+        </div>
+        <p class="hero__lead">
+          I help founders turn ideas into execution across growth, product,
+          GTM, partnerships, and startup operations.
+        </p>
+        <div class="hero__cta">
+          <a href="#work" class="btn-p">See the work</a>
+          <a href="#journey" class="btn-g">My journey</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero__stats r" aria-label="Key metrics">
+      <div class="hstat">
+        <span class="hstat__n">15<span class="v">+</span></span>
+        <span class="hstat__l">Strategic partnerships closed</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat__n">7<span class="v">+</span></span>
+        <span class="hstat__l">Web3 ecosystems grown</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat__n">70<span class="v">%</span></span>
+        <span class="hstat__l">Research effort cut with AI tooling</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Community</span><b>✦</b><span>UX Strategy</span><b>✦</b><span>Product Marketing</span><b>✦</b><span>Business Development</span><b>✦</b><span>Partnerships</span><b>✦</b><span>Growth Ops</span><b>✦</b><span>Product Growth</span><b>✦</b>
+      <span>Community</span><b>✦</b><span>UX Strategy</span><b>✦</b><span>Product Marketing</span><b>✦</b><span>Business Development</span><b>✦</b><span>Partnerships</span><b>✦</b><span>Growth Ops</span><b>✦</b><span>Product Growth</span><b>✦</b>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       WORK — case studies
+  ================================================================ -->
+  <section class="section" id="work">
+    <div class="wrap">
+      <p class="sec-label r">01 — What I built</p>
+      <div class="cases">
+
+        <!-- KPI Tracker -->
+        <article class="case r">
+          <div class="case__info">
+            <div class="case__tag">Analytics</div>
+            <h2 class="case__title">KPI Tracker</h2>
+            <div class="case__blocks">
+              <div>
+                <span class="blk__label">The problem</span>
+                <p class="blk__text">BD was spread across Telegram, X, email, and calls with no single source of truth. The team could not tell which channels were working or where deals were quietly leaking.</p>
+              </div>
+              <div>
+                <span class="blk__label">What I built</span>
+                <p class="blk__text">A dashboard pulling outreach, reply rates, sentiment, funnel health, and a follow-up cadence calendar into one place. Three views: Overview, Follow-ups, Channels &amp; Messages.</p>
+              </div>
+              <div>
+                <span class="blk__label">The impact</span>
+                <p class="blk__text">The team could open it and instantly see the best channel, the biggest leak in the funnel, and exactly who to follow up with that day. Guesswork became clear decisions.</p>
+              </div>
+            </div>
+          </div>
+          <div class="case__visual">
+            <div class="win">
+              <div class="win__bar"><i></i><i></i><i></i></div>
+              <div class="win__shot">
+                <img src="KPI%20Tracker.png" alt="KPI Tracker dashboard" id="kpi-img" loading="lazy"/>
+              </div>
+            </div>
+            <div class="thumbs">
+              <button class="thumb on" onclick="swap('kpi-img','KPI%20Tracker.png',this)" type="button"><img src="KPI%20Tracker.png" alt=""/></button>
+              <button class="thumb" onclick="swap('kpi-img','KPI%20Page%202.png',this)" type="button"><img src="KPI%20Page%202.png" alt=""/></button>
+              <button class="thumb" onclick="swap('kpi-img','KPI%20Page%203.png',this)" type="button"><img src="KPI%20Page%203.png" alt=""/></button>
+            </div>
+          </div>
+        </article>
+
+        <!-- DraftBird -->
+        <article class="case r">
+          <div class="case__info">
+            <div class="case__tag">Content Ops</div>
+            <h2 class="case__title">DraftBird</h2>
+            <div class="case__blocks">
+              <div>
+                <span class="blk__label">The problem</span>
+                <p class="blk__text">Content kept shipping late. Every post needed a founder's sign-off, and approvals were scattered across DMs and spreadsheets, so things slipped through the cracks.</p>
+              </div>
+              <div>
+                <span class="blk__label">What I built</span>
+                <p class="blk__text">A content approval app that brings drafting, urgent flags, review, approvals, scheduling, and analytics into one shared queue.</p>
+              </div>
+              <div>
+                <span class="blk__label">The impact</span>
+                <p class="blk__text">Content review used to eat an hour to an hour and a half every single day. With DraftBird that dropped to roughly an hour a week. Same approvals, a fraction of the time.</p>
+              </div>
+            </div>
+          </div>
+          <div class="case__visual">
+            <div class="win">
+              <div class="win__bar"><i></i><i></i><i></i></div>
+              <div class="win__shot">
+                <img src="draftbird.png" alt="DraftBird content approval application" loading="lazy"/>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- DeFi Lead Scanner -->
+        <article class="case r">
+          <div class="case__info">
+            <div class="case__tag">AI Tooling</div>
+            <h2 class="case__title">DeFi Lead Scanner</h2>
+            <div class="case__blocks">
+              <div>
+                <span class="blk__label">The problem</span>
+                <p class="blk__text">Qualifying which protocols to approach took hours of manual research every week, and a lot of outreach still went to poor-fit leads.</p>
+              </div>
+              <div>
+                <span class="blk__label">What I built</span>
+                <p class="blk__text">A human-in-the-loop AI tool that scans DeFi protocols and scores each lead hot, warm, or cold by TVL, fees, and fit, then routes them to a review queue where a person makes the final call.</p>
+              </div>
+              <div>
+                <span class="blk__label">The impact</span>
+                <p class="blk__text">Manual research work dropped by 70 to 80%, and overall daily outreach effort came down by around 30%. The team stopped digging and spent its time only on leads that actually fit.</p>
+              </div>
+            </div>
+          </div>
+          <div class="case__visual">
+            <div class="win">
+              <div class="win__bar"><i></i><i></i><i></i></div>
+              <div class="win__shot">
+                <img src="Lead%20Scaner.png" alt="DeFi Lead Scanner" loading="lazy"/>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       EXPERIMENTAL: Products I've Helped Improve
+  ================================================================ -->
+  <section class="section" id="products">
+    <div class="wrap">
+      <div class="exp-badge r">Experimental</div>
+      <div class="exp-intro r">
+        <h2 class="exp-intro__title">Products I've Helped Improve</h2>
+        <p class="exp-intro__sub">A collection of products where I contributed through product analysis, UX reviews, onboarding optimization, growth recommendations, and user journey improvements.</p>
+        <p class="exp-intro__note">I wasn't the founder, designer, or developer of these products. My role was to identify friction, understand user behavior, uncover growth opportunities, and recommend improvements.</p>
+      </div>
+      <div class="proj-grid" id="proj-grid">
+        <button class="proj-card" type="button" data-idx="0"><img class="proj-card__logo" src="images/logo-curvance.jpg" alt=""><p class="proj-card__name">Curvance</p><p class="proj-card__cat">DeFi · Lending</p></button>
+        <button class="proj-card" type="button" data-idx="1"><img class="proj-card__logo" src="images/logo-haiku.jpg" alt=""><p class="proj-card__name">Haiku</p><p class="proj-card__cat">DeFi · Multi-Swap</p></button>
+        <button class="proj-card" type="button" data-idx="2"><img class="proj-card__logo" src="images/logo-symphony.jpg" alt=""><p class="proj-card__name">Symphony</p><p class="proj-card__cat">AI · Trading Agent</p></button>
+        <button class="proj-card" type="button" data-idx="3"><img class="proj-card__logo" src="images/logo-gmtrade.jpg" alt=""><p class="proj-card__name">gmTrade</p><p class="proj-card__cat">DeFi · Perp DEX</p></button>
+        <button class="proj-card" type="button" data-idx="4"><img class="proj-card__logo" src="images/logo-yap.jpg" alt=""><p class="proj-card__name">Yap Market</p><p class="proj-card__cat">Web3 · Content-to-Earn</p></button>
+      </div>
+      <div class="proj-stage" id="proj-stage" hidden>
+        <div class="proj-left">
+          <div class="proj-active-hd">
+            <img class="proj-active-hd__logo" id="proj-logo" src="" alt="">
+            <div class="proj-active-hd__info"><p class="proj-active-hd__name" id="proj-name"></p><p class="proj-active-hd__cat" id="proj-cat"></p></div>
+            <div class="proj-roles" id="proj-roles"></div>
+            <button class="proj-back" id="proj-back" type="button">← All products</button>
+          </div>
+          <div class="proj-panels">
+            <div class="proj-panel" data-idx="0">
+              <div class="exp-blk"><span class="exp-blk__label">Context</span><p class="exp-blk__text">Reviewed their onboarding flow internally at Refine Studio — QA, feature recommendations, and simplifying the first-time user experience for a DeFi lending protocol.</p></div>
+              <div class="exp-blk"><span class="exp-blk__label">What I flagged</span><ul class="exp-blk__list"><li>Too many steps before users could do anything useful</li><li>Value wasn't surfaced early enough to hold new users' attention</li><li>Key actions were buried with no clear path to them</li></ul></div>
+              <div class="exp-blk"><span class="exp-blk__label">My Recommendations</span><ul class="exp-blk__list"><li>Add a progress indicator — users need to know how close they are to the end</li><li>Surface the top APY opportunity on the first screen, not buried in the product</li><li>Cut the steps to make a first deposit to under three clicks</li></ul></div>
+              <div class="exp-focus"><span class="exp-tag">Activation</span><span class="exp-tag">Onboarding</span><span class="exp-tag">UX</span></div>
+            </div>
+            <div class="proj-panel" data-idx="1">
+              <div class="exp-blk"><span class="exp-blk__label">Context</span><p class="exp-blk__text">Reviewed the interface for their multi-asset swap product while at Refine Studio — focused on the first-use experience and where new users were getting lost.</p></div>
+              <div class="exp-blk"><span class="exp-blk__label">What I flagged</span><ul class="exp-blk__list"><li>No obvious starting point — interface assumed familiarity users didn't have</li><li>Users had to figure out the UX pattern before they could see any value</li><li>A simple guided first-swap flow would have done a lot of the work</li></ul></div>
+              <div class="exp-blk"><span class="exp-blk__label">My Recommendations</span><ul class="exp-blk__list"><li>A "Start your first swap" wizard — guided, not free-form, for first-timers</li><li>Show expected output before users confirm, not after</li><li>Surface 3–5 popular trading pairs upfront so users aren't starting from zero</li></ul></div>
+              <div class="exp-focus"><span class="exp-tag">First-Use UX</span><span class="exp-tag">Education</span><span class="exp-tag">Activation</span></div>
+            </div>
+            <div class="proj-panel" data-idx="2">
+              <div class="exp-blk"><span class="exp-blk__label">Context</span><p class="exp-blk__text">Reviewed how they were handling trust signals for an AI agent that autonomously trades on your behalf — a product where trust is the entire conversion problem.</p></div>
+              <div class="exp-blk"><span class="exp-blk__label">What I flagged</span><ul class="exp-blk__list"><li>Users had zero visibility into what the AI was doing or why</li><li>No way to audit past decisions, which makes confidence-building impossible</li><li>Trust is the conversion driver for anything touching funds — it needed to be built into the UX</li></ul></div>
+              <div class="exp-blk"><span class="exp-blk__label">My Recommendations</span><ul class="exp-blk__list"><li>Add a decision log: every trade should have a one-line "why" explanation</li><li>Let users set a risk cap and visibly reflect it in the AI's behavior</li><li>Show live position rationale in plain language, not just raw P&L numbers</li></ul></div>
+              <div class="exp-focus"><span class="exp-tag">Trust</span><span class="exp-tag">AI Products</span><span class="exp-tag">Transparency</span></div>
+            </div>
+            <div class="proj-panel" data-idx="3">
+              <div class="exp-blk"><span class="exp-blk__label">Context</span><p class="exp-blk__text">Benchmarked their perpetual DEX against leading competitors including dYdX and Hyperliquid — identifying where the experience gap was largest and which fixes would close it fastest.</p></div>
+              <div class="exp-blk"><span class="exp-blk__label">What I flagged</span><ul class="exp-blk__list"><li>Gaps vs. dYdX and Hyperliquid were easy to spot — and users would spot them too</li><li>Mobile experience had friction points that top competitors had already solved</li><li>Order flow was longer than it needed to be</li></ul></div>
+              <div class="exp-blk"><span class="exp-blk__label">My Recommendations</span><ul class="exp-blk__list"><li>Reduce the open-position flow to two taps on mobile, matching Hyperliquid</li><li>Add a quick-close button directly on the position card — don't make users dig</li><li>Prioritize the highest-gap UX improvements first based on competitor parity analysis</li></ul></div>
+              <div class="exp-focus"><span class="exp-tag">Trading UX</span><span class="exp-tag">Mobile UX</span><span class="exp-tag">Benchmarking</span></div>
+            </div>
+            <div class="proj-panel" data-idx="4">
+              <div class="exp-blk"><span class="exp-blk__label">Context</span><p class="exp-blk__text">Worked inside the platform and contributed to growth and onboarding strategy — focused on activation, retention, and making the earn loop clear enough to drive repeat participation.</p></div>
+              <div class="exp-blk"><span class="exp-blk__label">What I flagged</span><ul class="exp-blk__list"><li>Core value loop wasn't clear on first visit — users didn't know what they'd earn</li><li>Active campaigns were buried, so first participation required more effort than it should</li><li>Nothing pulling users back after their first campaign</li></ul></div>
+              <div class="exp-blk"><span class="exp-blk__label">My Recommendations</span><ul class="exp-blk__list"><li>A guided "your first campaign" flow — make the first participation take under 2 minutes</li><li>Surface active campaigns on the home screen, not three clicks deep in the nav</li><li>Add a streak or comeback mechanic to create a reason to return the next day</li></ul></div>
+              <div class="exp-focus"><span class="exp-tag">Onboarding</span><span class="exp-tag">Activation</span><span class="exp-tag">Retention</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="proj-right" id="proj-right"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       JOURNEY — phase grid
+  ================================================================ -->
+  <section class="section" id="journey">
+    <div class="wrap">
+      <p class="sec-label r">02 — The path</p>
+      <div class="phases">
+
+        <div class="phase r">
+          <span class="phase__num">01</span>
+          <span class="phase__tag">Community</span>
+          <h3 class="phase__title">Where it started.</h3>
+          <p class="phase__body">Working inside ecosystems taught me how people actually behave inside products. What makes them join, stay, trust, and bring others in. No deck teaches that.</p>
+          <ul class="phase__list">
+            <li>Initia, Mira, Injective, Hyperion, Seismic, Billions Network, Hemi</li>
+            <li>Moderation, ambassador programs, AMAs, IRL events</li>
+            <li>User psychology, retention mechanics, community growth</li>
+          </ul>
+        </div>
+
+        <div class="phase r">
+          <span class="phase__num">02</span>
+          <span class="phase__tag">UX Strategy</span>
+          <h3 class="phase__title">Then I looked at why products lose people.</h3>
+          <p class="phase__body">At Refine Studio as UX Strategist. Find the friction that slows growth before anyone names it.</p>
+          <ul class="phase__list">
+            <li>UX audits, user journey analysis, conversion path reviews</li>
+            <li>Client products: Curvance, Haiku, Symphony, gmTrade</li>
+            <li>Onboarding fixes, CTA improvements, flow optimization</li>
+          </ul>
+        </div>
+
+        <div class="phase r">
+          <span class="phase__num">03</span>
+          <span class="phase__tag">Growth Ops</span>
+          <h3 class="phase__title">Then I moved from analysis to execution.</h3>
+          <p class="phase__body">Transitioned into Growth Operator at Refine Studio. Analysis gave me the problems. Operations gave me the tools to fix them.</p>
+          <ul class="phase__list">
+            <li>GTM strategies, funnels, workflow systems, internal tooling</li>
+            <li>Built DraftBird and the AI Lead Scouting Tool</li>
+            <li>Scout GTM: positioning, messaging, acquisition strategy</li>
+          </ul>
+        </div>
+
+        <div class="phase r">
+          <span class="phase__num">04</span>
+          <span class="phase__tag">GTM & Partnerships</span>
+          <h3 class="phase__title">Then I helped ecosystems grow.</h3>
+          <p class="phase__body">At Yap Market, working across partnerships, GTM, campaigns, and ecosystem growth. Sitting between strategy and execution.</p>
+          <ul class="phase__list">
+            <li>Hemi Network, Income RWA, EmbueFi — campaign, launch, acquisition</li>
+            <li>Closed 15+ partnerships, organized Network School Dubai</li>
+            <li>GTM planning, ecosystem activation, distribution strategy</li>
+          </ul>
+        </div>
+
+        <div class="phase phase--next r">
+          <span class="phase__num">Next</span>
+          <span class="phase__tag">Product Growth</span>
+          <h3 class="phase__title">Now I want to go deeper into product.</h3>
+          <p class="phase__body">The through-line is clear: find the problem, understand the user, build the fix, measure what moved. That is product thinking. I have been doing it without the title.</p>
+          <ul class="phase__list">
+            <li>Product analytics, SQL, PM frameworks, AI automation</li>
+            <li>Looking for product growth, product marketing, or startup operator roles</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SKILLS
+  ================================================================ -->
+  <section class="section" id="skills">
+    <div class="wrap">
+      <p class="sec-label r">03 — What I do best</p>
+      <div class="skills-wrap">
+        <div>
+          <p class="skills__group-label">Core skills</p>
+          <ul class="chips r">
+            <li>Growth Strategy</li>
+            <li>Funnel Design</li>
+            <li>GTM Execution</li>
+            <li>User Acquisition</li>
+            <li>Product Thinking</li>
+            <li>UX Analysis</li>
+            <li>User Journey Mapping</li>
+            <li>Conversion Optimization</li>
+            <li>Workflow Design</li>
+            <li>Internal Systems</li>
+            <li>Strategic Partnerships</li>
+            <li>Vibe Coding</li>
+          </ul>
+        </div>
+        <div>
+          <p class="skills__group-label">Currently learning</p>
+          <div class="learning-list r">
+            <div class="li"><span class="li__dot" aria-hidden="true"></span>Product Analytics</div>
+            <div class="li"><span class="li__dot" aria-hidden="true"></span>SQL</div>
+            <div class="li"><span class="li__dot" aria-hidden="true"></span>PM Frameworks</div>
+            <div class="li"><span class="li__dot" aria-hidden="true"></span>AI Automation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       CONTACT
+  ================================================================ -->
+  <section class="section contact" id="contact" aria-label="Contact">
+    <div class="wrap">
+      <p class="contact__kicker r">Let's talk</p>
+      <h2 class="contact__title r">Let's grow your product together.</h2>
+      <a href="mailto:Pranshuranaarmy@gmail.com" class="contact__email r">Pranshuranaarmy@gmail.com</a>
+      <p class="contact__meta r">Based in India · IST · usually replies within a day</p>
+      <div class="contact__links r">
+        <a href="https://www.linkedin.com/in/pranshu-rana-795a961b2/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/pranshu_rana_" target="_blank" rel="noopener">Twitter / X</a>
+        <a href="#" target="_blank" rel="noopener">Resume</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<script>
+// Scroll-to-top on refresh
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+window.addEventListener("load", () => window.scrollTo(0, 0));
+
+// Nav hairline on scroll
+(function () {
+  const nav = document.getElementById("nav");
+  if (!nav) return;
+  const tick = () => nav.classList.toggle("is-scrolled", window.scrollY > 6);
+  window.addEventListener("scroll", tick, { passive: true });
+  tick();
+})();
+
+// Products: card grid → left/right stage with anti-clockwise queue.
+    (function () {
+      const PROJECTS = [
+        { idx:0, name:'Curvance',   cat:'DeFi · Lending Protocol',  logo:'images/logo-curvance.jpg', roles:['QA','Feature Recommendations'] },
+        { idx:1, name:'Haiku',      cat:'DeFi · Multi-Asset Swap',  logo:'images/logo-haiku.jpg',    roles:['UX Strategy','Usability Review'] },
+        { idx:2, name:'Symphony',   cat:'DeFi · AI Trading Agent',  logo:'images/logo-symphony.jpg', roles:['Trust Design','Product Strategy'] },
+        { idx:3, name:'gmTrade',    cat:'DeFi · Perpetual Trading', logo:'images/logo-gmtrade.jpg',  roles:['UX Benchmarking','Mobile UX'] },
+        { idx:4, name:'Yap Market', cat:'Web3 · Content-to-Earn',   logo:'images/logo-yap.jpg',      roles:['Product Growth','Onboarding Strategy'] },
+      ];
+      const grid    = document.getElementById('proj-grid');
+      const stage   = document.getElementById('proj-stage');
+      const right   = document.getElementById('proj-right');
+      const logoEl  = document.getElementById('proj-logo');
+      const nameEl  = document.getElementById('proj-name');
+      const catEl   = document.getElementById('proj-cat');
+      const rolesEl = document.getElementById('proj-roles');
+      const backBtn = document.getElementById('proj-back');
+      if (!grid || !stage || !right) return;
+
+      let sidebarOrder = PROJECTS.map(p => p.idx);
+      let activeIdx = null;
+
+      function renderSidebar() {
+        right.innerHTML = '';
+        sidebarOrder.forEach(i => {
+          const p = PROJECTS[i];
+          const btn = document.createElement('button');
+          btn.className = 'proj-side-btn';
+          btn.type = 'button';
+          btn.innerHTML =
+            `<img class="proj-side-btn__logo" src="${p.logo}" alt="">` +
+            `<div class="proj-side-btn__info">` +
+            `<span class="proj-side-btn__name">${p.name}</span>` +
+            `<span class="proj-side-btn__cat">${p.cat}</span>` +
+            `</div>`;
+          btn.addEventListener('click', () => activate(i));
+          right.appendChild(btn);
+        });
+      }
+
+      function activate(idx) {
+        const proj = PROJECTS[idx];
+        const pos = sidebarOrder.indexOf(idx);
+        if (pos !== -1) sidebarOrder.splice(pos, 1);
+        if (activeIdx !== null) sidebarOrder.push(activeIdx);
+        activeIdx = idx;
+
+        logoEl.src = proj.logo; logoEl.alt = proj.name;
+        nameEl.textContent = proj.name;
+        catEl.textContent = proj.cat;
+        rolesEl.innerHTML = proj.roles.map(r => `<span class="proj-role">${r}</span>`).join('');
+
+        document.querySelectorAll('.proj-panel').forEach(p => p.classList.remove('is-active'));
+        const panel = document.querySelector(`.proj-panel[data-idx="${idx}"]`);
+        if (panel) panel.classList.add('is-active');
+
+        grid.hidden = true;
+        stage.hidden = false;
+        renderSidebar();
+      }
+
+      if (backBtn) {
+        backBtn.addEventListener('click', () => {
+          grid.hidden = false;
+          stage.hidden = true;
+          sidebarOrder = PROJECTS.map(p => p.idx);
+          activeIdx = null;
+        });
+      }
+
+      document.querySelectorAll('.proj-card').forEach(card => {
+        card.addEventListener('click', () => activate(+card.dataset.idx));
+      });
+    })();
+
+// Scroll reveal
+(function () {
+  const els = document.querySelectorAll(".r");
+  if (!("IntersectionObserver" in window)) {
+    els.forEach(el => el.classList.add("in"));
+    return;
+  }
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add("in"), Math.min(i * 40, 180));
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.07, rootMargin: "0px 0px -6% 0px" });
+  els.forEach(el => io.observe(el));
+})();
+
+// KPI Tracker image switcher
+function swap(imgId, src, btn) {
+  document.getElementById(imgId).src = src;
+  btn.closest(".thumbs").querySelectorAll(".thumb").forEach(b => b.classList.remove("on"));
+  btn.classList.add("on");
+}
+</script>
+
+</body>
+</html>

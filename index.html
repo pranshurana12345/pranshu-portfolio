@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pranshu Rana · Growth, Product & GTM</title>
+    <meta
+      name="description"
+      content="A working diary of Pranshu Rana, across community, UX strategy, product marketing, business development, partnerships, growth operations, and product growth."
+    />
+
+    <!-- browser-tab icon (logo monogram) -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="apple-touch-icon" href="favicon.svg" />
+
+    <!-- link / social preview -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Pranshu Rana · Growth, Product & GTM" />
+    <meta
+      property="og:description"
+      content="I help Web3 ecosystems and founders grow through community, partnerships, business development, and content."
+    />
+    <meta property="og:image" content="og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pranshu Rana · Growth, Product & GTM" />
+    <meta
+      name="twitter:description"
+      content="Growth, product and GTM. Community, partnerships, business development, and content."
+    />
+    <meta name="twitter:image" content="og.png" />
+
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=satoshi@400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- ===========================================================
+         TEMPORARY theme previewer (top-left). Lets Pranshu try looks.
+         Remove this whole block + #themer styles + the theme JS once
+         a theme is chosen.
+         =========================================================== -->
+    <div class="themer" id="themer">
+      <button
+        class="themer__btn"
+        id="themerBtn"
+        aria-expanded="false"
+        aria-controls="themerPanel"
+      >
+        <span class="themer__swatch" aria-hidden="true"></span
+        ><span class="themer__label">Theme</span>
+      </button>
+      <div
+        class="themer__panel"
+        id="themerPanel"
+        role="menu"
+        aria-label="Compare model themes"
+      >
+        <p class="themer__hint">Theme</p>
+        <div class="themer__grid">
+          <button class="swatch" data-theme-pick="white" style="--a:#ffffff;--b:#5b7cfa"><i></i>Light</button>
+          <button class="swatch" data-theme-pick="sonnet" style="--a:#7c3aed;--b:#1e1b4b"><i></i>Dark</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg" aria-hidden="true">
+      <span class="bg__blob bg__blob--1"></span>
+      <span class="bg__blob bg__blob--2"></span>
+      <span class="bg__blob bg__blob--3"></span>
+    </div>
+
+    <header class="nav" id="nav">
+      <div class="wrap nav__inner">
+        <a href="#top" class="nav__brand">Pranshu Rana</a>
+        <nav class="nav__links">
+          <a href="javascript:void(0)" id="aboutOpen" class="nav__about">About</a>
+          <a href="#journey">Journey</a>
+          <a href="#work">Work</a>
+          <a href="#products">Products</a>
+          <a href="#skills">Skills</a>
+          <a href="#life">Life</a>
+          <a href="#contact" class="nav__cta">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- first screen: hero + role marquee, sized so the marquee lands on the
+           bottom edge of the viewport; it scrolls up with the page after that -->
+      <div class="firstview">
+        <section class="hero">
+        <!-- Full-bleed banner: starts under the nav and fades out before the
+             headline so "Hi / I'm Pranshu." sits clean on the page.
+             Swap the src for your own (images/banner.jpg). -->
+        <div class="hero__banner reveal">
+          <img
+            src="minimal_style_landscape_design_1407.jpg"
+            alt=""
+            onerror="this.style.display='none'"
+          />
+        </div>
+
+        <div class="wrap hero__body">
+          <div class="hero__main">
+            <span class="status hero__status"
+              ><span class="status__dot"></span>Open to new opportunities</span
+            >
+            <h1 class="hero__title">
+              Hi <span class="wave" aria-hidden="true">&#128075;</span><br />I'm<span
+                class="hero__name"
+                >Pranshu.</span
+              >
+            </h1>
+            <p class="hero__lead">
+              I help founders turn ideas into execution across growth, product,
+              GTM, partnerships, and startup operations.
+            </p>
+            <div class="hero__cta">
+              <a href="#journey" class="btn">View my journey</a>
+              <a href="#work" class="link">Explore my work ›</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span>Community</span><b>✦</b><span>UX Strategy</span><b>✦</b><span>Product Marketing</span><b>✦</b><span>Business Development</span><b>✦</b><span>Partnerships</span><b>✦</b><span>Growth Ops</span><b>✦</b><span>Product Growth</span><b>✦</b>
+          <span>Community</span><b>✦</b><span>UX Strategy</span><b>✦</b><span>Product Marketing</span><b>✦</b><span>Business Development</span><b>✦</b><span>Partnerships</span><b>✦</b><span>Growth Ops</span><b>✦</b><span>Product Growth</span><b>✦</b>
+        </div>
+      </div>
+      </div>
+      <!-- /firstview -->
+
+      <section class="section">
+        <div class="wrap about">
+          <h2 class="about__big">Less of a portfolio. More of a working diary.</h2>
+          <div class="about__text">
+            <p>
+              I started in community, went into UX strategy at a product
+              studio, moved into growth operations and tooling, then into GTM
+              and partnerships across Web3 ecosystems.
+            </p>
+            <p>
+              Every step added a layer: user behavior, product friction,
+              systems thinking, go-to-market, ecosystem growth. The title
+              changed but the work was always the same: find what is broken,
+              understand why, build something that fixes it.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="journey">
+        <div class="wrap">
+          <p class="sec-title">The tracks I have taken</p>
+          <div class="roadmap">
+            <details class="track" open>
+              <summary class="track__head">
+                <span class="track__era">01</span>
+                <span class="track__title">Community is where it started.</span>
+                <span class="track__tag">Community</span>
+                <span class="track__chev" aria-hidden="true"></span>
+              </summary>
+              <div class="track__detail">
+                <p>
+                  Working inside ecosystems taught me how people actually
+                  behave inside products: what makes them join, stay, trust,
+                  and bring others in. No deck teaches that.
+                </p>
+                <ul>
+                  <li>Worked across communities including Initia, Mira, Injective, Hyperion, Seismic, Billions Network, and Hemi.</li>
+                  <li>Ran moderation, ambassador programs, AMAs, Spaces, online events, and IRL moments.</li>
+                  <li>Built a foundation in user psychology, retention, and what makes communities stick.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="track">
+              <summary class="track__head">
+                <span class="track__era">02</span>
+                <span class="track__title">Then I started looking at why products lose people.</span>
+                <span class="track__tag">UX Strategy</span>
+                <span class="track__chev" aria-hidden="true"></span>
+              </summary>
+              <div class="track__detail">
+                <p>
+                  At Refine Studio, I worked as a UX Strategist embedded in
+                  client products. My job was to find the invisible friction
+                  that slows growth before anyone names it.
+                </p>
+                <ul>
+                  <li>Ran UX audits, user journey analysis, onboarding reviews, and conversion path analysis across client products.</li>
+                  <li>Projects included Curvance, Haiku, Symphony, and gmTrade.</li>
+                  <li>Delivered feature recommendations, flow improvements, and activation fixes grounded in user behavior, not assumptions.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="track">
+              <summary class="track__head">
+                <span class="track__era">03</span>
+                <span class="track__title">Then I moved from analysis to execution.</span>
+                <span class="track__tag">Growth Ops</span>
+                <span class="track__chev" aria-hidden="true"></span>
+              </summary>
+              <div class="track__detail">
+                <p>
+                  I transitioned into a Growth Operator role at Refine Studio,
+                  working directly with founders to build systems and move
+                  faster. Analysis gave me the problems. Operations gave me
+                  the tools to fix them.
+                </p>
+                <ul>
+                  <li>Built GTM strategies, sales funnels, workflow systems, and internal tooling for multiple products.</li>
+                  <li>Built a Content Approval Platform that reduced founder content review from daily to roughly weekly.</li>
+                  <li>Built an AI Lead Scouting Tool that reduced manual research effort by 70 to 80%.</li>
+                  <li>Contributed to Scout GTM: positioning, messaging, acquisition strategy, and launch planning.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="track">
+              <summary class="track__head">
+                <span class="track__era">04</span>
+                <span class="track__title">Then I helped ecosystems grow.</span>
+                <span class="track__tag">GTM & Partnerships</span>
+                <span class="track__chev" aria-hidden="true"></span>
+              </summary>
+              <div class="track__detail">
+                <p>
+                  At Yap Market, I worked across partnerships, GTM, campaigns,
+                  and ecosystem growth, sitting between the strategy and the
+                  teams executing it.
+                </p>
+                <ul>
+                  <li>Supported Hemi Network, Income RWA, EmbueFi, and other ecosystem partners on GTM, launch positioning, and acquisition strategy.</li>
+                  <li>Closed 15+ strategic partnerships and organized a Network School collaboration in Dubai.</li>
+                  <li>Helped projects think through campaign structure, distribution, and ecosystem activation from zero.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="track track--next">
+              <summary class="track__head">
+                <span class="track__era">Next</span>
+                <span class="track__title">Now I want to go deeper into product.</span>
+                <span class="track__tag">Product Growth</span>
+                <span class="track__chev" aria-hidden="true"></span>
+              </summary>
+              <div class="track__detail">
+                <p>
+                  The through-line across every role has been the same: find
+                  the problem, understand the user, build the fix, measure
+                  what moved. That is product thinking. I have been doing it
+                  without the title.
+                </p>
+                <ul>
+                  <li>Looking for a product growth, product marketing, or startup operator role where execution depth matters more than job title history.</li>
+                  <li>Currently sharpening product analytics, SQL, PM frameworks, and AI-powered automation.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="work">
+        <div class="wrap">
+          <p class="sec-title">Things I have built</p>
+          <p class="work-intro">
+            When a team, a flow, or a product has a problem, I tend to build the
+            fix. Tap any project to see the problem, what I built, and the impact.
+          </p>
+          <div class="bento">
+            <article
+              class="tile tile--feature js-proj"
+              data-tag="Analytics"
+              data-title="KPI Tracker, outreach and BD analytics"
+              data-problem="BD was spread across Telegram, X, email, and calls with no single source of truth, so the team could not tell which channels were working or where deals were quietly leaking."
+              data-build="I built a dashboard that pulls outreach, reply rates, sentiment, funnel health, and a follow-up cadence calendar into one place, split across Overview, Follow-ups, and Channels & Messages."
+              data-impact="The team could open it and instantly see the best channel, the biggest leak in the funnel, and exactly who to follow up with that day. It turned guesswork into clear decisions."
+              data-imgs="KPI%20Tracker.png|KPI%20Page%202.png|KPI%20Page%203.png"
+            >
+              <div class="window">
+                <div class="window__bar"><i></i><i></i><i></i></div>
+                <div class="window__shot">
+                  <img src="KPI%20Tracker.png" alt="KPI Tracker dashboard" loading="lazy" />
+                </div>
+              </div>
+              <div class="tile__cap">
+                <h3>KPI Tracker</h3>
+                <p>Outreach and BD analytics: reply rates, sentiment, funnel health, follow-up cadence. 3 views.</p>
+              </div>
+            </article>
+
+            <article
+              class="tile tile--proj js-proj"
+              data-tag="Content Ops"
+              data-title="DraftBird (Content Approval Application)"
+              data-problem="Content kept shipping late. Every post needed a founder's sign-off, and approvals were scattered across DMs and spreadsheets, so things slipped through the cracks."
+              data-build="I built a content approval app that brings drafting, urgent flags, review, approvals, scheduling, and analytics into one shared queue."
+              data-impact="Getting content reviewed, aligned, and synced used to eat about an hour to an hour and a half every single day. With DraftBird that dropped to roughly an hour a week. Same approvals, a fraction of the time."
+              data-imgs="draftbird.png"
+            >
+              <div class="window">
+                <div class="window__bar"><i></i><i></i><i></i></div>
+                <div class="window__shot">
+                  <img src="draftbird.png" alt="DraftBird content approval application" loading="lazy" />
+                </div>
+              </div>
+              <div class="tile__cap">
+                <h3>DraftBird <span class="proj__note">(Content Approval Application)</span></h3>
+                <p>A content approval app to draft, review, approve, schedule, and track, all in one place.</p>
+              </div>
+            </article>
+
+            <article
+              class="tile tile--proj js-proj"
+              data-tag="AI Tooling"
+              data-title="DeFi Lead Scanner, an AI lead qualifier"
+              data-problem="Qualifying which protocols to approach took the team hours of manual research every week, and a lot of outreach still went to poor-fit leads."
+              data-build="I built a human-in-the-loop AI tool that scans DeFi protocols and scores each lead hot, warm, or cold by TVL, fees, and fit, then routes them to a review queue where a person makes the final call."
+              data-impact="Manual research work dropped by about 70 to 80%, and overall daily outreach effort came down by around 30%. The team stopped digging and spent its time only on leads that actually fit."
+              data-imgs="Lead%20Scaner.png"
+            >
+              <div class="window">
+                <div class="window__bar"><i></i><i></i><i></i></div>
+                <div class="window__shot">
+                  <img src="Lead%20Scaner.png" alt="DeFi Lead Scanner" loading="lazy" />
+                </div>
+              </div>
+              <div class="tile__cap">
+                <h3>DeFi Lead Scanner</h3>
+                <p>An AI lead qualifier that scans protocols and scores leads hot, warm, or cold with a review queue.</p>
+              </div>
+            </article>
+
+            <article class="tile tile--stat">
+              <span class="tile__num">20+</span>
+              <span class="tile__label">Strategic Partnerships Closed</span>
+              <span class="tile__desc">Co-marketing, revenue-sharing, ecosystem, event, and growth partnerships across Web3 startups and communities.</span>
+            </article>
+            <article class="tile tile--stat">
+              <span class="tile__num">5+</span>
+              <span class="tile__label">Internal Systems Built</span>
+              <span class="tile__desc">Workflow automation, lead intelligence, content ops, GTM, and execution systems to improve team efficiency.</span>
+            </article>
+            <article class="tile tile--stat">
+              <span class="tile__num">15+</span>
+              <span class="tile__label">Products & User Journeys Audited</span>
+              <span class="tile__desc">Reviewed onboarding, activation, conversion, trust, and UX across Web3 products to surface growth opportunities.</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Products I've Helped Improve -->
+      <section class="section" id="products">
+        <div class="wrap">
+          <p class="sec-title reveal">Products I've helped shape</p>
+          <p class="prod-hd__sub">I wasn't the founder, designer, or developer. My role: find friction, understand users, and surface what was slowing activation, trust, and retention — then hand off clear recommendations.</p>
+
+          <div class="prod-tabs" id="prod-tabs">
+            <button class="prod-tab is-active" type="button" data-idx="0">
+              <img class="prod-tab__logo" src="images/logo-curvance.jpg" alt="">
+              <div class="prod-tab__info">
+                <span class="prod-tab__name">Curvance</span>
+                <span class="prod-tab__cat">DeFi · Lending</span>
+              </div>
+            </button>
+            <button class="prod-tab" type="button" data-idx="1">
+              <img class="prod-tab__logo" src="images/logo-haiku.jpg" alt="">
+              <div class="prod-tab__info">
+                <span class="prod-tab__name">Haiku</span>
+                <span class="prod-tab__cat">DeFi · Multi-Swap</span>
+              </div>
+            </button>
+            <button class="prod-tab" type="button" data-idx="2">
+              <img class="prod-tab__logo" src="images/logo-symphony.jpg" alt="">
+              <div class="prod-tab__info">
+                <span class="prod-tab__name">Symphony</span>
+                <span class="prod-tab__cat">AI · Trading Agent</span>
+              </div>
+            </button>
+            <button class="prod-tab" type="button" data-idx="3">
+              <img class="prod-tab__logo" src="images/logo-gmtrade.jpg" alt="">
+              <div class="prod-tab__info">
+                <span class="prod-tab__name">gmTrade</span>
+                <span class="prod-tab__cat">DeFi · Perp DEX</span>
+              </div>
+            </button>
+            <button class="prod-tab" type="button" data-idx="4">
+              <img class="prod-tab__logo" src="images/logo-yap.jpg" alt="">
+              <div class="prod-tab__info">
+                <span class="prod-tab__name">Yap Market</span>
+                <span class="prod-tab__cat">Web3 · Content-to-Earn</span>
+              </div>
+            </button>
+          </div>
+
+          <div class="prod-body" id="prod-body">
+            <!-- Curvance -->
+            <div class="prod-panel is-active" data-idx="0">
+              <div class="prod-panel__hd">
+                <div class="prod-roles">
+                  <span class="proj-role">QA</span>
+                  <span class="proj-role">Feature Recommendations</span>
+                </div>
+              </div>
+              <div class="prod-cols">
+                <div class="exp-blk">
+                  <span class="exp-blk__label">Context</span>
+                  <p class="exp-blk__text">Reviewed onboarding internally at Refine Studio — QA, feature recommendations, and simplifying the first-time user experience for a DeFi lending protocol.</p>
+                </div>
+                <div class="exp-blk">
+                  <span class="exp-blk__label">What I flagged</span>
+                  <ul class="exp-blk__list">
+                    <li>Too many steps before users could do anything useful</li>
+                    <li>Value wasn't surfaced early enough to hold new users' attention</li>
+                    <li>Key actions were buried with no clear path to them</li>
+                  </ul>
+                </div>
+                <div class="exp-blk">
+                  <span class="exp-blk__label">My Recommendations</span>
+                  <ul class="exp-blk__list">
+                    <li>Add a progress indicator — users need to know how close they are to the end</li>
+                    <li>Surface the top APY on the first screen, not buried in the product</li>
+                    <li>Cut the steps to make a first deposit to under three clicks</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="exp-focus"><span class="exp-tag">Activation</span><span class="exp-tag">Onboarding</span><span class="exp-tag">UX</span></div>
+            </div>
+
+            <!-- Haiku -->
+            <div class="prod-panel" data-idx="1">
+              <div class="prod-panel__hd">
+                <div class="prod-roles">
+                  <span class="proj-role">UX Strategy</span>
+                  <span class="proj-role">Usability Review</span>
+                </div>
+              </div>
+              <div class="prod-cols">
+                <div class="exp-blk">
+                  <span class="exp-blk__label">Context</span>
+                  <p class="exp-blk__text">Reviewed the multi-asset swap interface at Refine Studio — focused on the first-use experience and where new users were getting lost.</p>
+                </div>
+                <div class="exp-blk">
+                  <span class="exp-blk__label">What I flagged</span>
+                  <ul class="exp-blk__list">
+                    <li>No obvious starting point — interface assumed familiarity users didn't have</li>
+                    <li>Users had to figure out the UX pattern before they could see any value</li>
+                    <li>A guided first-swap flow would have done a lot of the heavy lifting</li>
+                  </ul>
+                </div>
+                <div class="exp-blk">
+                  <span class="exp-blk__label">My Recommendations</span>
+                  <ul class="exp-blk__list">
+                    <li>A "Start your first swap" wizard — guided, not free-form, for first-timers</li>
+                    <li>Show expected output before users confirm, not after</li>
+                    <li>Surface 3–5 popular trading pairs upfront so users aren't starting from zero</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="exp-focus"><span class="exp-tag">First-Use UX</span><span class="exp-tag">Education</span><span class="exp-tag">Activation</span></div>
+            </div>
+
+            <!-- Symphony -->
+            <div class="prod-panel" data-idx="2">
+              <div class="prod-panel__hd">
+                <div class="prod-roles">
+                  <span class="proj-role">Trust Design</span>
+                  <span class="proj-role">Product Strategy</span>
+                </div>
+              </div>
+              <div class="prod-cols">
+                <div class="exp-blk">
+                  <span class="exp-blk__label">Context</span>
+                  <p class="exp-blk__text">Reviewed trust signals for an AI agent that autonomously trades on your behalf — a product where trust is the entire conversion problem.</p>
+                </div>
+                <div class="exp-blk">
+                  <span class="exp-blk__label">What I flagged</span>
+                  <ul class="exp-blk__list">
+                    <li>Users had zero visibility into what the AI was doing or why</li>
+                    <li>No way to audit past decisions — confidence-building was impossible</li>
+                    <li>Trust is the conversion driver for anything touching funds</li>
+                  </ul>
+                </div>
+                <div class="exp-blk">
+                  <span class="exp-blk__label">My Recommendations</span>
+                  <ul class="exp-blk__list">
+                    <li>Add a decision log: every trade should have a one-line "why" explanation</li>
+                    <li>Let users set a risk cap and visibly reflect it in the AI's behavior</li>
+                    <li>Show live position rationale in plain language, not just raw P&L</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="exp-focus"><span class="exp-tag">Trust</span><span class="exp-tag">AI Products</span><span class="exp-tag">Transparency</span></div>
+            </div>
+
+            <!-- gmTrade -->
+            <div class="prod-panel" data-idx="3">
+              <div class="prod-panel__hd">
+                <div class="prod-roles">
+                  <span class="proj-role">UX Benchmarking</span>
+                  <span class="proj-role">Mobile UX</span>
+                </div>
+              </div>
+              <div class="prod-cols">
+                <div class="exp-blk">
+                  <span class="exp-blk__label">Context</span>
+                  <p class="exp-blk__text">Benchmarked their perpetual DEX against dYdX and Hyperliquid — identifying where the experience gap was largest and which fixes would close it fastest.</p>
+                </div>
+                <div class="exp-blk">
+                  <span class="exp-blk__label">What I flagged</span>
+                  <ul class="exp-blk__list">
+                    <li>Experience gaps vs. dYdX and Hyperliquid were easy to spot — users would spot them too</li>
+                    <li>Mobile friction points top competitors had already solved</li>
+                    <li>Order flow was longer than it needed to be</li>
+                  </ul>
+                </div>
+                <div class="exp-blk">
+                  <span class="exp-blk__label">My Recommendations</span>
+                  <ul class="exp-blk__list">
+                    <li>Reduce the open-position flow to two taps on mobile, matching Hyperliquid</li>
+                    <li>Add a quick-close button directly on the position card</li>
+                    <li>Prioritize the highest-gap UX improvements based on competitor parity analysis</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="exp-focus"><span class="exp-tag">Trading UX</span><span class="exp-tag">Mobile UX</span><span class="exp-tag">Benchmarking</span></div>
+            </div>
+
+            <!-- Yap Market -->
+            <div class="prod-panel" data-idx="4">
+              <div class="prod-panel__hd">
+                <div class="prod-roles">
+                  <span class="proj-role">Product Growth</span>
+                  <span class="proj-role">Onboarding Strategy</span>
+                </div>
+              </div>
+              <div class="prod-cols">
+                <div class="exp-blk">
+                  <span class="exp-blk__label">Context</span>
+                  <p class="exp-blk__text">Worked inside the platform on growth and onboarding strategy — focused on activation, retention, and making the earn loop clear enough to drive repeat participation.</p>
+                </div>
+                <div class="exp-blk">
+                  <span class="exp-blk__label">What I flagged</span>
+                  <ul class="exp-blk__list">
+                    <li>Core value loop wasn't clear on first visit — users didn't know what they'd earn</li>
+                    <li>Active campaigns were buried, first participation required too much effort</li>
+                    <li>Nothing pulling users back after their first campaign</li>
+                  </ul>
+                </div>
+                <div class="exp-blk">
+                  <span class="exp-blk__label">My Recommendations</span>
+                  <ul class="exp-blk__list">
+                    <li>A guided "your first campaign" flow — first participation in under 2 minutes</li>
+                    <li>Surface active campaigns on the home screen, not three clicks deep</li>
+                    <li>Add a streak or comeback mechanic to create a reason to return next day</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="exp-focus"><span class="exp-tag">Onboarding</span><span class="exp-tag">Activation</span><span class="exp-tag">Retention</span></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="section" id="skills">
+        <div class="wrap cap">
+          <p class="sec-title cap__title">What I do best</p>
+          <div class="cap__body">
+            <ul class="chips-row">
+              <li>Growth Strategy</li>
+              <li>Funnel Design</li>
+              <li>GTM Execution</li>
+              <li>User Acquisition</li>
+              <li>Product Thinking</li>
+              <li>UX Analysis</li>
+              <li>User Journey Mapping</li>
+              <li>Conversion Optimization</li>
+              <li>Workflow Design</li>
+              <li>Internal Systems</li>
+              <li>Strategic Partnerships</li>
+              <li>Vibe Coding</li>
+            </ul>
+            <div class="logos" aria-label="Currently learning">
+              <span>Product Analytics</span>
+              <span>SQL</span>
+              <span>PM Frameworks</span>
+              <span>AI Automation</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Off the clock: a photo journey of events, building, travel, learning.
+           Swap the Unsplash src values for your own photos (drop into images/). -->
+      <section class="section" id="life">
+        <div class="wrap">
+          <p class="sec-title">Off the clock</p>
+          <div class="life">
+            <h2 class="life__head">A working life, and a life outside it.</h2>
+            <p class="life__sub">
+              A few moments from the meetups and community events I help bring
+              together.
+            </p>
+          </div>
+          <div class="gallery">
+
+            <figure
+              class="gcard gcard--wide"
+              data-tag="Events"
+              data-title="Network School community meetup"
+              data-desc="A Network School Breakpoint Week meetup I helped bring together, from sorting the venue and the run of show to making sure the room actually buzzed."
+              data-imgs="images/life-venue.jpg|images/life-ns.jpg|images/life-cap.jpg"
+            >
+              <img
+                src="images/life-venue.jpg"
+                alt="Network School community meetup"
+                loading="lazy"
+              />
+              <figcaption>
+                <span class="gcard__tag">Events</span>Network School meetup
+              </figcaption>
+            </figure>
+
+            <figure class="gcard gcard--ph" aria-label="Public speaking, photo coming soon">
+              <div class="ph">
+                <svg class="ph__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="9" y="2.5" width="6" height="11" rx="3" />
+                  <path d="M5 11a7 7 0 0 0 14 0" />
+                  <path d="M12 18v3" />
+                </svg>
+                <span class="ph__label">Public Speaking</span>
+                <span class="ph__hint">Photo coming soon</span>
+              </div>
+            </figure>
+
+            <figure class="gcard gcard--ph" aria-label="Trekking, photo coming soon">
+              <div class="ph">
+                <svg class="ph__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 19h18" />
+                  <path d="M4 19l6-11 4 7 2-3 4 7" />
+                  <circle cx="17" cy="6" r="1.6" />
+                </svg>
+                <span class="ph__label">Trekking</span>
+                <span class="ph__hint">Photo coming soon</span>
+              </div>
+            </figure>
+
+            <figure class="gcard gcard--ph" aria-label="Vibe coding, photo coming soon">
+              <div class="ph">
+                <svg class="ph__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M8 7l-5 5 5 5" />
+                  <path d="M16 7l5 5-5 5" />
+                </svg>
+                <span class="ph__label">Vibe Coding</span>
+                <span class="ph__hint">Photo coming soon</span>
+              </div>
+            </figure>
+
+            <figure class="gcard gcard--ph" aria-label="Reading, photo coming soon">
+              <div class="ph">
+                <svg class="ph__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 5s3-1.4 9 0c6-1.4 9 0 9 0v13s-3-1.4-9 0c-6-1.4-9 0-9 0z" />
+                  <path d="M12 5v13" />
+                </svg>
+                <span class="ph__label">Reading</span>
+                <span class="ph__hint">Photo coming soon</span>
+              </div>
+            </figure>
+
+            <figure class="gcard gcard--wide gcard--ph" aria-label="Travelling, photo coming soon">
+              <div class="ph">
+                <svg class="ph__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 4L3 11l6 2 2 6z" />
+                  <path d="M21 4l-11 9" />
+                </svg>
+                <span class="ph__label">Travelling</span>
+                <span class="ph__hint">Photo coming soon</span>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lightbox popup for the gallery -->
+      <div class="lightbox" id="lightbox" aria-hidden="true">
+        <div class="lightbox__backdrop" id="lightboxBackdrop"></div>
+        <div
+          class="lightbox__panel"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="lbTitle"
+        >
+          <button class="lightbox__close" id="lightboxClose" aria-label="Close">
+            Close ×
+          </button>
+          <div class="lightbox__media"><img id="lbImg" src="" alt="" /></div>
+          <div class="lightbox__body">
+            <span class="lightbox__tag" id="lbTag"></span>
+            <h3 class="lightbox__title" id="lbTitle"></h3>
+            <div class="lightbox__sections" id="lbSections"></div>
+            <p class="lightbox__desc" id="lbDesc"></p>
+            <div class="lightbox__thumbs" id="lbThumbs"></div>
+          </div>
+        </div>
+      </div>
+
+      <section class="section contact" id="contact">
+        <div class="wrap contact__inner">
+          <h2 class="contact__title">Let's grow your<br />product together.</h2>
+          <a href="mailto:Pranshuranaarmy@gmail.com" class="contact__mail"
+            >Pranshuranaarmy@gmail.com</a
+          >
+          <p class="contact__tz">
+            Based in India · <span id="clockTimeFoot">--:--</span> IST · usually
+            replies within a day
+          </p>
+          <div class="contact__links">
+            <a
+              href="https://www.linkedin.com/in/pranshu-rana-795a961b2/"
+              target="_blank"
+              rel="noopener"
+              >LinkedIn</a
+            >
+            <a href="https://x.com/pranshu_rana_" target="_blank" rel="noopener"
+              >Twitter / X</a
+            >
+            <a href="#" target="_blank" rel="noopener">Resume</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="wrap foot__inner">
+        <span>© 2026 Pranshu Rana</span>
+        <nav class="foot__links">
+          <a
+            href="https://www.linkedin.com/in/pranshu-rana-795a961b2/"
+            target="_blank"
+            rel="noopener"
+            >LinkedIn</a
+          >
+          <a href="https://x.com/pranshu_rana_" target="_blank" rel="noopener"
+            >Twitter / X</a
+          >
+          <a href="mailto:Pranshuranaarmy@gmail.com">Email</a>
+        </nav>
+      </div>
+    </footer>
+
+    <div class="sheet-backdrop" id="sheetBackdrop"></div>
+    <aside class="sheet" id="aboutSheet" aria-hidden="true" aria-label="About Pranshu">
+      <button class="sheet__close" id="sheetClose">Close ×</button>
+      <div class="sheet__inner">
+        <div class="sheet__avatar" aria-hidden="true">PR</div>
+        <p class="eyebrow">Outside the work</p>
+        <h2 class="sheet__title">What keeps me moving.</h2>
+        <p class="sheet__lead">
+          I like building things, meeting interesting people, and learning how
+          products grow in the real world, not just in decks.
+        </p>
+        <div class="sheet__grid">
+          <div class="sheet__block">
+            <h4>Outdoors</h4>
+            <p>Trekking, running, traveling, and finding places that make the world feel bigger.</p>
+          </div>
+          <div class="sheet__block">
+            <h4>Curiosity</h4>
+            <p>Exploring new technologies, especially AI systems and the way they change how people build.</p>
+          </div>
+          <div class="sheet__block">
+            <h4>Currently learning</h4>
+            <p>Product analytics, SQL, product management frameworks, and AI-powered automation systems.</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <script src="script.js"></script>
+  </body>
+</html>

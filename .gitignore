@@ -1,0 +1,9 @@
+node_modules/
+.claude/
+shot-*.png
+diag-*.png
+og.png
+Screenshot *.png
+*.mjs
+package.json
+package-lock.json
