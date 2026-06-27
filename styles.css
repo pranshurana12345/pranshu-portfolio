@@ -2387,6 +2387,14 @@ main,
    ============================================================ */
 .mob-nav { display: none; } /* hidden on desktop */
 
+/* Hide the floating nav while a popup/preview or panel is open so it can't
+   overlap modal content on mobile. */
+body.modal-open .mob-nav {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
 @media (max-width: 719px) {
   /* push all page content above the floating nav */
   body { padding-bottom: 90px; }
@@ -2398,10 +2406,11 @@ main,
   .mob-nav {
     display: flex;
     position: fixed;
-    bottom: 20px;
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
     left: 50%;
     transform: translateX(-50%);
     z-index: 110;
+    transition: opacity 0.2s ease;
     align-items: center;
     padding: 6px;
     border-radius: 999px;

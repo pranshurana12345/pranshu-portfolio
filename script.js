@@ -35,12 +35,14 @@ window.addEventListener("load", () => window.scrollTo(0, 0));
     backdrop.classList.add("open");
     sheet.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    document.body.classList.add("modal-open");
   };
   const close = () => {
     sheet.classList.remove("open");
     backdrop.classList.remove("open");
     sheet.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
+    document.body.classList.remove("modal-open");
   };
 
   if (openBtn) openBtn.addEventListener("click", open);
@@ -344,6 +346,7 @@ window.addEventListener("load", () => window.scrollTo(0, 0));
     lb.classList.add("open");
     lb.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    document.body.classList.add("modal-open");
     const body = lb.querySelector(".lightbox__body");
     if (body) body.scrollTop = 0;
     closeBtn.focus();
@@ -352,6 +355,7 @@ window.addEventListener("load", () => window.scrollTo(0, 0));
     lb.classList.remove("open");
     lb.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
+    document.body.classList.remove("modal-open");
   };
 
   cards.forEach((card) => {
