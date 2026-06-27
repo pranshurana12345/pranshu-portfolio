@@ -181,6 +181,28 @@ window.addEventListener("load", () => window.scrollTo(0, 0));
   });
 })();
 
+// In-page links (hero CTAs, header nav) → open the target accordion on
+// mobile before scrolling, so they don't just land on a collapsed header.
+(function () {
+  if (window.matchMedia('(min-width: 720px)').matches) return;
+  document
+    .querySelectorAll('a[href^="#"]:not(.mob-nav__item)')
+    .forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        var id = link.getAttribute('href').slice(1);
+        if (!id || id === 'top') return;
+        var section = document.getElementById(id);
+        if (section && section.classList.contains('mob-accordion')) {
+          e.preventDefault();
+          section.classList.add('is-open');
+          setTimeout(function () {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 60);
+        }
+      });
+    });
+})();
+
 // Mobile accordion — tap heading to expand/collapse section.
 (function () {
   if (window.matchMedia('(min-width: 720px)').matches) return;
@@ -322,6 +344,8 @@ window.addEventListener("load", () => window.scrollTo(0, 0));
     lb.classList.add("open");
     lb.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    const body = lb.querySelector(".lightbox__body");
+    if (body) body.scrollTop = 0;
     closeBtn.focus();
   };
   const close = () => {
